@@ -8,6 +8,7 @@ def lnglat_validator(value): #정규표현식에 맞는 조건만 유효성 검�
         raise ValidationError('오류다 임마') #예외발생
 
 class Post(models.Model):
+    author = models.CharField(max_length=60)
     title = models.CharField(max_length=100, verbose_name='제목')
     #길이 제한 있는 문자열, 성능 좋아짐
     content = models.TextField(verbose_name='내용')
