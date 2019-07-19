@@ -7,5 +7,14 @@
 <body>
     <h1>{{ post.title }}</h1>
     {{ post.content|linebreaks }}
+    <hr/>
+    <h3>Comments</h3>
+    {% for comment in post.comment_set.all %}
+        <li>
+            {{ comment.message }}
+            <small>by {{ comment.author }}</small>
+            <small>at {{ comment.updated_at }}</small>
+        </li>
+    {% endfor %}
 </body>
 </html>

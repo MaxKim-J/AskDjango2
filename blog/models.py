@@ -28,3 +28,12 @@ class Post(models.Model):
 
     class Meta: #Post 내 기본정렬, 모든 정렬 칼럼에 모오두 반영
         ordering = ['-id'] #id는 오름차순 -id는 내림차순 ,로 1/2차 기준
+
+
+class Comment(models.Model): #대응되는 모델 하나 더
+    post = models.ForeignKey(Post, on_delete=models.CASCADE) #2.0부터
+    #post_id 가 db필드로 들어간다.
+    author = models.CharField(max_length=60)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Post
+from .models import Post, Comment
 
 @admin.register(Post) #데코레이터로 써도 대더라, 어드민에 모델 연결
 class PostAdmin(admin.ModelAdmin):
@@ -20,3 +20,7 @@ class PostAdmin(admin.ModelAdmin):
         updated_count = queryset.update(status='p')
         self.message_user(request,'{}건의 포스팅을 published 상태로 변경'.format(updated_count))
     make_published.short_description = "지정 포스팅을 published상태로 변경합니다"
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass
