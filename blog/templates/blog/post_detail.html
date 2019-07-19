@@ -9,7 +9,7 @@
     {{ post.content|linebreaks }}
     <hr/>
     <h3>Comments</h3>
-    {% for comment in post.comment_set.all %}
+    {% for comment in post.comment_set.all %} <!--외래키에서 모델 부르기 -->
         <li>
             {{ comment.message }}
             <small>by {{ comment.author }}</small>

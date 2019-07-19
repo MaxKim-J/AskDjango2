@@ -23,8 +23,14 @@ class Post(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
     #옵션: 레코드 갱신이 될때마다 자동저장
     status = models.CharField(max_length=1, choices = STATUS_CHOICES) #목록
+    tag_set = models.ManyToManyField('Tag', blank=True) #relation 지정할때는 문자열로 모델명을
+    #해당 릴레이션 클래스가 하위에 있으면 네임에러, 문자열로 지정해주기
+    #다른앱에 있다면 도트연산자
     tags = models.CharField(max_length=100, blank=True)
     lnglat = models.CharField(max_length=50, validators=[lnglat_validator], help_text='경도,위도 포맷으로 입력')
+
+    def __str__(self): #인스턴스의 이름으로 디비 객체 표현
+        return self.name
 
     class Meta: #Post 내 기본정렬, 모든 정렬 칼럼에 모오두 반영
         ordering = ['-id'] #id는 오름차순 -id는 내림차순 ,로 1/2차 기준
@@ -37,3 +43,12 @@ class Comment(models.Model): #대응되는 모델 하나 더
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
