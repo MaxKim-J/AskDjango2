@@ -26,3 +26,5 @@ class Post(models.Model):
     tags = models.CharField(max_length=100, blank=True)
     lnglat = models.CharField(max_length=50, validators=[lnglat_validator], help_text='경도,위도 포맷으로 입력')
 
+    class Meta: #Post 내 기본정렬, 모든 정렬 칼럼에 모오두 반영
+        ordering = ['-id'] #id는 오름차순 -id는 내림차순 ,로 1/2차 기준

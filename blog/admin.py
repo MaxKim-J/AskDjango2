@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import Post
 
-@admin.register(Post) #데코레이터로 써도 대더라
+@admin.register(Post) #데코레이터로 써도 대더라, 어드민에 모델 연결
 class PostAdmin(admin.ModelAdmin):
     list_display=['id','title', 'content_size','status','created_at', 'updated_at']
     actions=['make_published', 'make_draft']
