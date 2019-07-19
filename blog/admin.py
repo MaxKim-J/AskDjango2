@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-
 from .models import Post
 
 @admin.register(Post) #데코레이터로 써도 대더라
