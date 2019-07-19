@@ -8,6 +8,10 @@
 <body>
     <h1>AskDjango_김종혁</h1>
     <p>안녕하세요 저는 장고를 배우고 있습니당 :)</p>
+    <form action="" method="get">
+        <input type="text" name="q" /> <!-- 유알엘 상 q라는 쿼리를 만들어버리기 -->
+        <input type="submit" value="검색" />
+    </form>
     {% for post in post_list %}
         <li>
             {{ post.id }}
