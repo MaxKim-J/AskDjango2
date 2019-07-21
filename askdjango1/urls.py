@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path, include, re_path
 
+
 urlpatterns = [
+    path('', lambda r: redirect('blog:post_list'), name='root'),
+    # 단순 리다이렉션에는 람다 활용하자!
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
-    path('dojo/', include('dojo.urls')),
+    path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
+    path('dojo/', include(('dojo.urls', 'dojo'), namespace='dojo')),
     path('accounts/', include('accounts.urls')),
 ]
 

@@ -11,7 +11,7 @@
     {% for post in post_list %}
         <li>
             {{ post.id }}
-            <a href="{% url "post_detail" post.id %}">
+            <a href="{% url "blog:post_detail" post.id %}">
                 <!--맨 마지막 인자는 url서 넘겨야하는 인자-->
                 <!--하위 페이지 만들었을때 넣어주는 그런 것이긔-->
                 {{ post.title }}
