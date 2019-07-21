@@ -12,4 +12,6 @@
             <small>at {{ comment.updated_at }}</small>
         </li>
     {% endfor %}
+    <hr/>
+    <a href="{% url "post_list" %}">글목록</a>
 {% endblock %}
