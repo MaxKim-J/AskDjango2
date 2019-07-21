@@ -4,11 +4,13 @@ from django.db import models
 from django.forms import ValidationError
 
 from django.conf import settings
+from django.urls import reverse
 
 
 def lnglat_validator(value): #정규표현식에 맞는 조건만 유효성 검사
     if not re.match(r'^(\d+\.?\d*),(\d+\.?\d*)$', value):
         raise ValidationError('오류다 임마') #예외발생
+
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -36,8 +38,12 @@ class Post(models.Model):
     def __str__(self): #인스턴스의 이름으로 디비 객체 표현
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('blog:post_detail', args=[self.id])
+
     class Meta: #Post 내 기본정렬, 모든 정렬 칼럼에 모오두 반영
         ordering = ['-id'] #id는 오름차순 -id는 내림차순 ,로 1/2차 기준
+
 
 
 class Comment(models.Model): #대응되는 모델 하나 더
