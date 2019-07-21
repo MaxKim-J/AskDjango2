@@ -3,6 +3,9 @@ import re
 from django.db import models
 from django.forms import ValidationError
 
+from django.conf import settings
+
+
 def lnglat_validator(value): #정규표현식에 맞는 조건만 유효성 검사
     if not re.match(r'^(\d+\.?\d*),(\d+\.?\d*)$', value):
         raise ValidationError('오류다 임마') #예외발생
@@ -13,7 +16,8 @@ class Post(models.Model):
         ('p', 'Published'),
         ('w', 'Withdraw')
     )
-    author = models.CharField(max_length=60)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    #author = models.CharField(max_length=60)
     title = models.CharField(max_length=100, verbose_name='제목')
     #길이 제한 있는 문자열, 성능 좋아짐
     content = models.TextField(verbose_name='내용')
@@ -38,7 +42,7 @@ class Post(models.Model):
 
 class Comment(models.Model): #대응되는 모델 하나 더
     post = models.ForeignKey(Post, on_delete=models.CASCADE) #2.0부터
-    #post_id 가 db필드로 들어간다.
+    #post_id 가 db필드로 들어간다. #인스턴스 한줄에 대응하는 다른 속성
     author = models.CharField(max_length=60)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
