@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>쟝고 blog</title>
-</head>
-<body>
-    <h1>AskDjango_김종혁</h1>
+{% extends "blog/layout.html" %}
+
+{% block content %}
+
+    <h2>AskDjango_김종혁</h2>
     <p>안녕하세요 저는 장고를 배우고 있습니당 :)</p>
     <form action="" method="get">
         <input type="text" name="q" /> <!-- 유알엘 상 q라는 쿼리를 만들어버리기 -->
@@ -22,5 +18,6 @@
             <small>{{ post.updated_at }}</small>
         </li>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
+<!-- 블락 이외는 다 무시됨 -->

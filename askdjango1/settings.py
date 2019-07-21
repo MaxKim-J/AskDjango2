@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'dojo',
     'django_extensions',
     'debug_toolbar',
-    'accounts','shop'
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +59,9 @@ ROOT_URLCONF = 'askdjango1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'askdjango1', 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
