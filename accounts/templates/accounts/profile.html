@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <h2>{{ user.username }}`s profile</h2>
+
+    <ul>
+        <li>이름 : {{ user.username }}</li>
+        <li>이메일 : {{ user.email }}</li>
+        <li>가입일 : {{ user.date_joined }}</li>
+    </ul>
+
+{% endblock %}
