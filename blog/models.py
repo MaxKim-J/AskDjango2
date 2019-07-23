@@ -57,6 +57,7 @@ class Comment(models.Model): #대응되는 모델 하나 더
     def __str__(self):
         return self.name
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
 

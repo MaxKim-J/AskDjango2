@@ -1,24 +1,42 @@
 {% extends "blog/layout.html" %}
 
 {% block content %}
+<div class="container">
+    <div class="row col-12">
+        <div class="col-sm-12"> <!--화면을 줄이면 메뉴바가 내려가므로 먼저 영역을 쪼개줘야 함-->
+            <hr/>
+            <div class="jumbotron mt-5"> <!-- 회색 배경에 제목과 부제목 있는 섹션 클래스-->
+                <h1 class="display-3 font-weight-bolder">AskDjango_김종혁</h1>
+                <p class="font-weight-bolder mt-3">안녕하세요 저는 장고를 배우고 있습니당 :)</p>
+                <hr/>
+                <form action="" method="get">
+                    <input type="text" name="q" /> <!-- 유알엘 상 q라는 쿼리를 만들어버리기 -->
+                    <input type="submit" value="검색" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row col-12">
+        <table class="col-sm-12 table-bordered table-hover" style="text-align: center">
+            <thead>
+                <th>id</th>
+                <th>title</th>
+                <th>updated_at</th>
+            </thead>
+            <tbody>
+                {% for post in post_list %}
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td><a href="{% url "blog:post_detail" post.id %}">{{ post.title }}</a></td>
+                        <!--맨 마지막 인자는 url서 넘겨야하는 인자-->
+                        <!--하위 페이지 만들었을때 넣어주는 그런 것이긔-->
+                        <td>{{ post.updated_at }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+         </table>
+    </div>
+</div>
 
-    <h2>AskDjango_김종혁</h2>
-    <p>안녕하세요 저는 장고를 배우고 있습니당 :)</p>
-    <form action="" method="get">
-        <input type="text" name="q" /> <!-- 유알엘 상 q라는 쿼리를 만들어버리기 -->
-        <input type="submit" value="검색" />
-    </form>
-    {% for post in post_list %}
-        <li>
-            {{ post.id }}
-            <a href="{% url "blog:post_detail" post.id %}">
-                <!--맨 마지막 인자는 url서 넘겨야하는 인자-->
-                <!--하위 페이지 만들었을때 넣어주는 그런 것이긔-->
-                {{ post.title }}
-            </a>
-            <small>{{ post.title }}</small>
-            <small>{{ post.updated_at }}</small>
-        </li>
-    {% endfor %}
 {% endblock %}
 <!-- 블락 이외는 다 무시됨 -->
