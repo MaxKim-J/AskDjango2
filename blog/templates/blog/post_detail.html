@@ -5,6 +5,11 @@
          <h1>{{ post.title }}</h1>
     </div>
     <div>
+        {% if post.photo %}
+            <img src = "{{ post.photo.url }}" style="max-width: 100%" />
+        {% endif %}
+    </div>
+    <div>
         {{ post.content|linebreaks }}
     </div>
     <hr/>

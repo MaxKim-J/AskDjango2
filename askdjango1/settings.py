@@ -130,6 +130,10 @@ STATICFILES_DIRS = [    # 이거 수동으로 해줘야댐
     os.path.join(BASE_DIR, 'askdjango1', 'static'),
 ]
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATIC_ROOT = 'static'
 
 INTERNAL_IPS = ["127.0.0.1"]

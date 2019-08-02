@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import path, include, re_path
@@ -27,6 +28,11 @@ urlpatterns = [
     path('dojo/', include(('dojo.urls', 'dojo'), namespace='dojo')),
     path('accounts/', include('accounts.urls')),
 ]
+
+urlpatterns += static(settings. MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# 개발환경에서 미디어 파일 서빙은? 스태틱 파일과는 다르게 서빙 미지원
+# 개발 편의성 목적으로 직접 서빙 룰 추가 가능
+# url 리퀘스트 있을때 스태틱에서 파일 찾아서 알아서 서빙을 하겠수다 +=
 
 if settings.DEBUG:
     import debug_toolbar
