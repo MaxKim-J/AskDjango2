@@ -126,6 +126,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [    # 이거 수동으로 해줘야댐
+    os.path.join(BASE_DIR, 'askdjango1', 'static'),
+]
+
 STATIC_ROOT = 'static'
 
 INTERNAL_IPS = ["127.0.0.1"]
+

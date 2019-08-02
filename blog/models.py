@@ -36,7 +36,7 @@ class Post(models.Model):
     lnglat = models.CharField(max_length=50, validators=[lnglat_validator], help_text='경도,위도 포맷으로 입력')
 
     def __str__(self): #인스턴스의 이름으로 디비 객체 표현
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.id])
