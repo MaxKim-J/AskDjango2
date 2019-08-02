@@ -2,3 +2,6 @@ django==2.2.3
 django-debug-toolbar
 django-extensions
 ipython[notebook]
+django-bootstrap3
+pilkit
+django-imagekit
