@@ -1,4 +1,4 @@
-django==2.2.3
+django==2.2.27
 django-debug-toolbar
 django-extensions
 ipython[notebook]
